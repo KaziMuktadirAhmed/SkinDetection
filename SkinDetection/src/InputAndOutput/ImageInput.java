@@ -1,9 +1,8 @@
 package InputAndOutput;
 
-import Train.ProbabilitySet;
+import Train.TrainingDataset;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +22,7 @@ public class ImageInput {
 //        detectSkin();
     }
 
-    public void detectSkin (ProbabilitySet pSet) throws IOException {
+    public void detectSkin (TrainingDataset dSet) throws IOException {
         int height = image.getHeight();
         int width = image.getWidth();
 
@@ -36,7 +35,7 @@ public class ImageInput {
             int green = (inputImagePixels[i] & 0x0000FF00) >> 8;
             int blue = (inputImagePixels[i] & 0x000000FF);
 
-            if (pSet.probabilitySkin[red][green][blue] > .15 * pSet.probabilityNonSkin[red][green][blue]) {
+            if ( (dSet.colorCountSkin[red][green][blue]/dSet.colorCountNonSkin[red][green][blue]) > .55 ) {
                 red = 250;
                 green = 250;
                 blue = 250;

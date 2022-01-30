@@ -4,7 +4,6 @@ import InputAndOutput.ImageInput;
 import Train.Train;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 public class MainClass {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
@@ -17,8 +16,8 @@ public class MainClass {
         Train train = new Train();
         System.out.println("Training finished");
 
-        ImageInput imageInput = new ImageInput("sample1.jpg");
-        imageInput.detectSkin(train.probabilitySet);
+        ImageInput imageInput = new ImageInput("sample2.jpg");
+        imageInput.detectSkin(train.dataset);
         System.out.println("Output generated");
     }
 }

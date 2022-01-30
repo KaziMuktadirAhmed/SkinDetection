@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.util.Objects;
 import javax.imageio.*;
 
-public class TrainingDataset {
+public class TrainingDataset implements Serializable{
     public String regularImageFilePath;
     public String maskImageFilePath;
 

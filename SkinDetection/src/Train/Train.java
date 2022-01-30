@@ -1,26 +1,23 @@
 package Train;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class Train {
     public TrainingDataset dataset;
     public ProbabilitySet probabilitySet;
 
     public Train () throws IOException, ClassNotFoundException {
-        File fileInput = new File("savedProbability.txt");
-//        Scanner scan = new Scanner(fileInput);
+        File datasetInput = new File("savedData.txt");
 
-        if (fileInput.getTotalSpace() > 0) {
-            System.out.println("Preveious dataset exixts");
-            ObjectInputStream obj = new ObjectInputStream(new FileInputStream(fileInput.getName()));
-            this.probabilitySet = (ProbabilitySet) obj.readObject();
+        if (datasetInput.getTotalSpace() > 0) {
+            System.out.println("Previous dataset exists");
+            ObjectInputStream obj = new ObjectInputStream(new FileInputStream(datasetInput.getName()));
+            this.dataset = (TrainingDataset) obj.readObject();
 
         } else {
-            System.out.println("Preveious dataset does not exixts");
+            System.out.println("Previous dataset does not exists");
             this.dataset = new TrainingDataset();
-            this.probabilitySet = new ProbabilitySet(dataset.totalSkinFound, dataset.totalNonSkinFound);
-            calculateProbability();
+            storeOnFile();
         }
     }
 
@@ -40,13 +37,11 @@ public class Train {
                 }
             }
         }
-
-        storeOnFile();
     }
 
     private void storeOnFile () throws IOException {
-        FileOutputStream fileOutput = new FileOutputStream("savedProbability.txt");
+        FileOutputStream fileOutput = new FileOutputStream("savedData.txt");
         ObjectOutputStream obj = new ObjectOutputStream(fileOutput);
-        obj.writeObject(this.probabilitySet);
+        obj.writeObject(this.dataset);
     }
 }
