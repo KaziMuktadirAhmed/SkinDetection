@@ -35,7 +35,7 @@ public class ImageInput {
             int green = (inputImagePixels[i] & 0x0000FF00) >> 8;
             int blue = (inputImagePixels[i] & 0x000000FF);
 
-            if ( (dSet.colorCountSkin[red][green][blue]/dSet.colorCountNonSkin[red][green][blue]) > .55 ) {
+            if ( (dSet.colorCountSkin[red][green][blue]/dSet.colorCountNonSkin[red][green][blue]) > .35 ) {
                 red = 250;
                 green = 250;
                 blue = 250;

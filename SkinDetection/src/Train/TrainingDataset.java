@@ -46,7 +46,7 @@ public class TrainingDataset implements Serializable{
                     Color pixelReal = new Color(image.getRGB(j, i));
                     Color pixelMask = new Color(mask.getRGB(j, i));
 
-                    if (pixelMask.getRed() < 230 && pixelMask.getGreen() < 230 && pixelMask.getBlue() < 230) {
+                    if (pixelMask.getRed() < 255 && pixelMask.getGreen() < 255 && pixelMask.getBlue() < 255) {
                         colorCountSkin[pixelReal.getRed()][pixelReal.getGreen()][pixelReal.getBlue()]++;
                         totalSkinFound++;
 
